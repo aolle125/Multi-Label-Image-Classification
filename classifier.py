@@ -25,15 +25,16 @@ class Classifier(nn.Module):
         self.fc3 = nn.Linear(4096, 512)
         self.fc4 = nn.Linear(512, NUM_CLASSES)
 
+
     def forward(self, x):
         x = self.pool(self.bn1(F.relu(self.conv1(x))))
         x = self.pool(self.bn2(F.relu(self.conv2(x))))
-        x = self.pool(self.dropout(self.bn3(F.relu(self.conv3(x)))))
-        x = self.pool(self.dropout(self.bn4(F.relu(self.conv4(x)))))
+        x = self.pool(self.bn3(F.relu(self.conv3(x))))
+        x = self.pool(self.bn4(F.relu(self.conv4(x))))
         x = x.view(x.size()[0], 256 * 12 * 12)
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        x = F.relu(self.fc3(x))
+        x = self.dropout(F.relu(self.fc1(x)))
+        x = self.dropout(F.relu(self.fc2(x)))
+        x = self.dropout(F.relu(self.fc3(x)))
         x = self.fc4(x)
         return x
 
