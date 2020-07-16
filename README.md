@@ -11,6 +11,6 @@ Once you have downloaded the zip file, execute the download_data script provided
 
 The classifier.py contains the Convolutional Neural Network used for prediction of Binary Lables for each of the 20 PASCAL classes
 
-The MP2_P1.ipynb contains the step-by-step preprocessing and execution of the classifier on the data.
+The MP2_P1.ipynb contains the step-by-step preprocessing and execution of the classifier on the data. It reaches a max mAP of 0.45
 
 
